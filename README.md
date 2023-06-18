@@ -19,7 +19,7 @@ docker build -t jboss-helloworld-html .
 
 # Run the docker container 
 
-docker run -itd -p 8008:8008 -p 9990:9990 jboss-helloworld
+docker run -itd -p 8008:8008 -p 9990:9990 jboss-helloworld-html:latest
 
 # How to check if jboss is installed within container ?
 After Deployment jboss will be on /opt/eap/standalone/tmp/ within container.
