@@ -1,0 +1,5 @@
+#Sun Jun 18 17:18:39 UTC 2023
+configuration*?=77E4A345FE1FF47C41B02DDF80A98DADA3BE25D9
+module-resource*?\:/wildfly-checkstyle/suppressions.xml=DD3FD5987C62C3034A4613F83C42B24683BCFC2E
+/root/spring-petclinic-jboss/jboss-eap-quickstarts/helloworld-html5/src/main/java/org/jboss/as/quickstarts/html5rest/HelloService.java=1687084141204
+/root/spring-petclinic-jboss/jboss-eap-quickstarts/helloworld-html5/src/main/java/org/jboss/as/quickstarts/html5rest/HelloWorld.java=1687084141204
