@@ -16,6 +16,7 @@ jobs:
       run: docker build . --file Dockerfile --tag ghcr.io/swagatam04/jboss-eap-api:latest
     
   publish-jboss-eap-runner-image:
+    needs: build 
     runs-on: runner2
     steps:
     - uses: actions/checkout@v2
