@@ -24,9 +24,27 @@ jobs:
       run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
         docker push ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}
+  image-scan:
+    needs: publish-jboss-eap-runner-image
+    runs-on: runner2
+    steps:
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+        with:
+          image-ref: 'ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}'
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
   
   run-jboss-eap-runner-image:
-    needs: publish-jboss-eap-runner-image 
+    needs: image-scan
     runs-on: deploy-server
     steps:
     - uses: actions/checkout@v2
@@ -52,20 +70,3 @@ jobs:
       run: |
        curl -i -X POST http://18.191.209.230:8008/helloworld-html5/hello/json/swagatam -vk
  
-  image-scan:
-    needs: check-application-health
-    runs-on: deploy-server
-    steps:
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
-        with:
-          image-ref: 'ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}'
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL,HIGH'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: 'trivy-results.sarif'
