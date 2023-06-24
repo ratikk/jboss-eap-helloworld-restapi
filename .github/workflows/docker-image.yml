@@ -32,9 +32,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Jboss-eap 
       run: |
-        image=$(docker ps -a|grep jboss-eap-api|awk '{print $1}')
+        image=$(docker ps -a|grep jboss-eap-api|awk '{print $1}'|wc -l)
         echo $image
-        docker rm -f $image
+        if [ $image -ge 1 ];then 
+          echo "Deleting existing image"
+          docker rm -f $(docker ps -a|grep jboss-eap-api|awk '{print $1}')
+        else
+          echo "no image to delete"
+        fi
         docker run -itd -p 8008:8008 -p 9990:9990 ghcr.io/swagatam04/jboss-eap-api:latest
 
   check-application-health:
