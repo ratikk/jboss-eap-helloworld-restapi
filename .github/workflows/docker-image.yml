@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ghcr.io/swagatam04/jboss-eap-api:$(date +%s)
+      run: docker build . --file Dockerfile --tag ghcr.io/swagatam04/jboss-eap-api:latest
     
   publish-jboss-eap-runner-image:
     runs-on: runner2
@@ -22,5 +22,5 @@ jobs:
     - name: Build the hello-world Docker image
       run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
-        docker push ghcr.io/swagatam04/jboss-eap-api:$(date +%s)
+        docker push ghcr.io/swagatam04/jboss-eap-api:latest
  
