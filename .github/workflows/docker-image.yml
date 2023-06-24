@@ -33,6 +33,7 @@ jobs:
     - name: Run Jboss-eap 
       run: |
         image=$(docker ps -a|grep jboss-eap-api|awk '{print $1}')
+        echo $image
         docker rm -f $image
         docker run -itd -p 8008:8008 -p 9990:9990 ghcr.io/swagatam04/jboss-eap-api:latest
 
