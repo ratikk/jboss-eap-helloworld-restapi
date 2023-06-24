@@ -20,8 +20,18 @@ jobs:
     runs-on: runner2
     steps:
     - uses: actions/checkout@v2
-    - name: Build the hello-world Docker image
+    - name: Build the jboss-eap Docker image
       run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
         docker push ghcr.io/swagatam04/jboss-eap-api:latest
+  
+  run-jboss-eap-runner-image:
+    needs: publish-jboss-eap-runner-image 
+    runs-on: deploy-server
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Jboss-eap 
+      run: |
+        docker run -itd -p 8008:8008 -p 9990:9990 ghcr.io/swagatam04/jboss-eap-api:latest
+  
  
