@@ -41,6 +41,7 @@ jobs:
           echo "no image to delete"
         fi
         docker run -itd -p 8008:8008 -p 9990:9990 ghcr.io/swagatam04/jboss-eap-api:latest
+        sleep 10
 
   check-application-health:
     needs: run-jboss-eap-runner-image
