@@ -62,7 +62,7 @@ jobs:
           image-ref: 'ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
-          scan-type: 'fs'
+          scan-type: 'image'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
       - name: Upload Trivy scan results to GitHub Security tab
