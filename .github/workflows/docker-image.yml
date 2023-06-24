@@ -60,6 +60,7 @@ jobs:
         else
           echo "no image to delete"
         fi
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
         docker run -itd -p 8008:8008 -p 9990:9990 ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}
         sleep 10
 
