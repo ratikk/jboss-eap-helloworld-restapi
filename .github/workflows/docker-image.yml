@@ -66,7 +66,7 @@ jobs:
           # The target image name of vulnerability scan (specify this parameter or "IMAGE_NAME" environment variable
           image: ghcr.io/swagatam04/jboss-eap-api:latest  # optional
           # severities of vulnerabilities (separated by commma)
-          severity: HIGH,CRITICAL  # optional, default is HIGH,CRITICAL
+          #severity: HIGH,CRITICAL  # optional, default is HIGH,CRITICAL
           # target vlunerability [os,library] (separated by commma)
           vuln_type:  os,library # optional, default is os,library
           # Ignore unfixed vulnerabilities [true, false]
