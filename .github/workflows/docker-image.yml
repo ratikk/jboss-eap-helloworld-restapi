@@ -32,7 +32,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Jboss-eap 
       run: |
-        docker rm -f $(docker ps -a|grep jboss-eap-api|awk '{print $1}')
+        image=$(docker ps -a|grep jboss-eap-api|awk '{print $1}')
+        docker rm -f $image
         docker run -itd -p 8008:8008 -p 9990:9990 ghcr.io/swagatam04/jboss-eap-api:latest
 
   check-application-health:
