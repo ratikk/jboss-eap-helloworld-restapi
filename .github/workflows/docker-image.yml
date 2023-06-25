@@ -1,12 +1,12 @@
 name: Docker Image CICD
 
 on:
- # push:
-  #  branches: [ "main" ]
+  push:
+    branches: [ "main" ]
   #pull_request:
    # branches: [ "main" ]
-  schedule:
-    - cron: "*/1 * * * *"
+  #schedule:
+   # - cron: "*/1 * * * *"
 
 jobs:
 
