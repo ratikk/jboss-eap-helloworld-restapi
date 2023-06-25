@@ -1,0 +1,5 @@
+#Sun Jun 25 18:14:54 UTC 2023
+configuration*?=8438C59747E21F50F50EAA342EA86F41EDD7386E
+module-resource*?\:/wildfly-checkstyle/suppressions.xml=DD3FD5987C62C3034A4613F83C42B24683BCFC2E
+/workspaces/jboss-eap-helloworld-restapi/src/main/java/org/jboss/as/quickstarts/html5rest/HelloService.java=1687716490894
+/workspaces/jboss-eap-helloworld-restapi/src/main/java/org/jboss/as/quickstarts/html5rest/HelloWorld.java=1687716490894
