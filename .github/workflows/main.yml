@@ -7,7 +7,7 @@ name:
 on:
   # Triggers the workflow every 5 minutes
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
  
       # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,10 +20,12 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: curl -L \
-             -X POST \
-             -H "Accept: application/vnd.github+json" \
-             -H "Authorization: Bearer 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"\
-             -H "X-GitHub-Api-Version: 2022-11-28" \
-              https://api.github.com/repos/swagatam04/jboss-eap-helloworld-restapi/merges \
-              -d '{"base":"main","head":"feature","commit_message":"Shipped cool_feature!"}'
+        run: |
+          
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer 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"\
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/swagatam04/jboss-eap-helloworld-restapi/merges \
+            -d '{"base":"main","head":"feature","commit_message":"Shipped cool_feature!"}'
