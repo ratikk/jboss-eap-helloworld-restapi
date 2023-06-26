@@ -65,7 +65,7 @@ jobs:
           docker push ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}
           
           echo "Pushing the image to jfrog repo"
-          echo ${{ secrets.JFROGSECRET }} | docker login -uskundu012@gmail.com swagatam04.jfrog.io
+          echo ${{ secrets.JFROGSECRET }} | docker login -uskundu012@gmail.com swagatam04.jfrog.io --password-stdin 
           docker push swagatam04.jfrog.io/demo-docker/jboss-eap-api:${{ github.sha }}
           
           
