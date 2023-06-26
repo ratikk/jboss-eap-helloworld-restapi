@@ -70,6 +70,7 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'   
           
+          
   run-jboss-eap-runner-image:
     needs: image-scan
     runs-on: deploy-server
