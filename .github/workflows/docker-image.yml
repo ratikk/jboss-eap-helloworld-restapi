@@ -36,9 +36,16 @@ jobs:
     - name: Build the Docker image
       run: |
         mvn clean package wildfly:deploy
+        echo "Building docker image for github container registry"
         docker build . --file Dockerfile --tag ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}
+        
+        echo "Building docker image for jfrog registry"
+        docker build . --file Dockerfile --tag swagatam04.jfrog.io/demo-docker/jboss-eap-api:${{ github.sha }}
+        
+        echo "##########################################"
         echo "Copy package to Jfrog"
         jf rt u --server-id=jfrogdemo --flat=false --include-dirs=true --recursive=true "target/*.war" maven-demo/
+        echo "###########################################"
     
   
 
@@ -47,10 +54,20 @@ jobs:
      runs-on: runner2
      steps:
       - uses: actions/checkout@v2
-      - name: Build the jboss-eap Docker image
+      
+      - name: Build the jboss-eap Docker image5
+        shell: bash
+        env:
+          JFROGSECRET: ${{ secrets.JFROGSECRET }}
         run: |
+          echo "Pushing image to github container registry"
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
           docker push ghcr.io/swagatam04/jboss-eap-api:${{ github.sha }}
+          
+          echo "Pushing the image to jfrog repo"
+          echo ${{ secrets.JFROGSECRET }} | docker login -uskundu012@gmail.com swagatam04.jfrog.io
+          docker push swagatam04.jfrog.io/demo-docker/jboss-eap-api:${{ github.sha }}
+          
           
   image-scan:
     needs: publish-jboss-eap-runner-image
