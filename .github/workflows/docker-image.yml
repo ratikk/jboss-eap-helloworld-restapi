@@ -115,5 +115,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Application Health Check
       run: |
-       curl -i -X POST http://18.191.209.230:8008/helloworld-html5/hello/json/swagatam -vk
+       curl -i -X POST http://52.15.53.14:8008/helloworld-html5/hello/json/swagatam -vk
  
