@@ -73,7 +73,7 @@ jobs:
           
   image-scan:
     needs: publish-jboss-eap-runner-image
-    runs-on: deploy-server
+    runs-on: runner2
     steps:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
