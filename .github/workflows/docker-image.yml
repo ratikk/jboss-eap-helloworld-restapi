@@ -119,5 +119,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Application Health Check
       run: |
-       curl -i -X POST http://52.15.53.14:8008/helloworld-html5/hello/json/rati -vk
+       curl -i -X POST http://3.16.136.245:8008/helloworld-html5/hello/json/rati -vk
  
