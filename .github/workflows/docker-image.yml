@@ -75,6 +75,7 @@ jobs:
           
   image-scan:
     needs: publish-jboss-eap-runner-image
+    permissions: write-all
     runs-on: runner2
     steps:
       - name: Run Trivy vulnerability scanner
