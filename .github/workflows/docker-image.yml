@@ -67,8 +67,8 @@ jobs:
         env:
           JFROGSECRET: ${{ secrets.JFROGSECRET }}
         run: |
-  
-          
+          echo "login to ghcr repo"
+          echo ${{ secrets.GITHUBTOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
           echo "Pushing the image to jfrog repo"
           echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
           docker push ratik.jfrog.io/demodocker/jboss-eap-api:${{ github.sha }}
