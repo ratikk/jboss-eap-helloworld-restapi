@@ -81,6 +81,7 @@ jobs:
           
        run: |
           echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
+          docker pull ratik.jfrog.io/demodocker/jboss-eap-api:${{ github.sha }}
          
         
    
