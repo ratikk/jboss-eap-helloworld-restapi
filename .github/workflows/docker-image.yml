@@ -69,12 +69,28 @@ jobs:
           echo "Pushing the image to jfrog repo"
           echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
           docker push ratik.jfrog.io/demodocker/jboss-eap-api:${{ github.sha }}
+  
+  cd-docker-login:
+    needs: publish-jboss-eap-runner-image
+    runs-on: deploy-server
+    steps:
+     - name: Run docker login
+       shell: bash
+       env:
+          JFROGSECRET: ${{ secrets.JFROGSECRET }}
+          
+       run: |
+          echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
+         
+        
+       
+    
           
           
   image-scan:
-    needs: publish-jboss-eap-runner-image
+    needs: cd-docker-login
     permissions: write-all
-    runs-on: ci-runner1
+    runs-on: deploy-server
     steps:
       - name: Run Trivy vulnerability scanner
         uses:  aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
