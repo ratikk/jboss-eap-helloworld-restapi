@@ -30,7 +30,7 @@ jobs:
 
   build:
     needs: cron
-    runs-on: runner2
+    runs-on: ci-runner1
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
@@ -55,7 +55,7 @@ jobs:
 
   publish-jboss-eap-runner-image:
      needs: build
-     runs-on: runner2
+     runs-on: ci-runner1
      steps:
       - uses: actions/checkout@v2
       
@@ -74,7 +74,7 @@ jobs:
   image-scan:
     needs: publish-jboss-eap-runner-image
     permissions: write-all
-    runs-on: runner2
+    runs-on: ci-runner1
     steps:
       - name: Run Trivy vulnerability scanner
         uses:  aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
@@ -118,5 +118,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Application Health Check
       run: |
-       curl -i -X POST http://3.16.136.245:8008/helloworld-html5/hello/json/rati -vk
+       curl -i -X POST http://18.224.169.33:8008/helloworld-html5/hello/json/rati -vk
  
