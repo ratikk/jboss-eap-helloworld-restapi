@@ -83,8 +83,7 @@ jobs:
           echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
          
         
-       
-    
+   
           
           
   image-scan:
