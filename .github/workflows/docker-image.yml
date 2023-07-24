@@ -37,6 +37,7 @@ jobs:
       run: |
         /opt/apache-maven-3.8.2/bin/mvn clean package wildfly:deploy
         NOW=$(date +"%Y%m%dT%H%M")
+        REL=115.1.0.0
        
         
 
@@ -46,10 +47,10 @@ jobs:
         
         echo "##########################################"
         echo "Copy package to Jfrog"
-        cp target/helloworld-html5.war target/helloworld-html5-115.2.0.0.war
-        cp target/helloworld-html5-115.2.0.0.war target/helloworld-html5-115.2.0.0_$NOW.war
+        cp target/helloworld-html5.war target/helloworld-html5-${REL}.war
+        cp target/helloworld-html5-${REL}.war target/helloworld-html5-${REL}_$NOW.war
         rm -rf target/helloworld-html5.war
-        rm -rf target/helloworld-html5-115.2.0.0.war
+        rm -rf target/helloworld-html5-${REL}.war
         jf rt u --server-id=jfrogdemo --flat=false --include-dirs=true --recursive=true "target/*.war" demo/
         echo "###########################################"
     
