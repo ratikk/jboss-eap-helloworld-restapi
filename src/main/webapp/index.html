@@ -1,65 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Welcome guys</title>
-<link rel="stylesheet" href="css/styles.css"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<style>
-    /* ... other styles ... */
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome guys</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sayHello').click(function(event) {
+                event.preventDefault();
 
-    #shakespeare-message {
-        display: none; /* Initially hide the message */
-        font-size: 1.2em;
-        margin-top: 20px;
-    }
-</style>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#sayHello').click(function(event) {
-            event.preventDefault();
+                var result = $('#result'),
+                    name = $.trim($('#name').val());
 
-            var result = $('#result'),
-                name = $.trim($('#name').val());
+                result.removeClass('invalid');
 
-            result.removeClass('invalid');
-
-            if (!name || !name.length) {
-                result.addClass('invalid').text('A name is required!');
-                return;
-            }
-
-            $.ajax('hello/json/' + name, {
-                dataType: 'json',
-                data: {},
-                type: 'POST',
-                success: function(data) {
-                    $('#result').text(data.result);
-
-                    // Display Shakespeare's message after successfully saying hello
-                    $('#shakespeare-message').show();
+                if (!name || !name.length) {
+                    result.addClass('invalid').text('A name is required!');
+                    return;
                 }
-            })
-            .error(function() {
-                console.log("error");
+
+                $.ajax('hello/json/' + name, {
+                    dataType: 'json',
+                    data: {},
+                    type: 'POST',
+                    success: function(data) {
+                        $('#result').text(data.result);
+                        // Displaying the Shakespeare message after submit is clicked
+                        $("#shakespeareMessage").show();
+                    }
+                }).error(function() {
+                    console.log("error");
+                });
             });
         });
-    });
-</script>
+    </script>
 </head>
+
 <body>
-Welcome Guys<br>
-<form name="theForm">
-    <fieldset>
-        <label for="name" id="name_label">Name</label>
-        <input name="name" id="name" type="text" required placeholder="Your Name"/>
-        <input type="submit" id="sayHello" value="Say Hello"/><span id="result"></span>
-    </fieldset>
-</form>
+    <p>Welcome Guys</p>
+    <form name="theForm">
+        <fieldset>
+            <label for="name" id="name_label">Name</label>
+            <input name="name" id="name" type="text" required placeholder="Your Name" />
+            <input type="submit" id="sayHello" value="Say Hello" /><span id="result"></span>
+        </fieldset>
+    </form>
 
-<div id="shakespeare-message">
-    <p>It’s lonely at the top.</p>
-    <p>Regards,<br>William Shakespeare</p>
-</div>
-
+    <!-- Shakespeare message, hidden by default and shown after submit -->
+    <div id="shakespeareMessage" style="display:none;">
+        <p>It’s lonely at the top.</p>
+        <p>Regards,<br> William Shakespeare</p>
+    </div>
 </body>
+
 </html>
