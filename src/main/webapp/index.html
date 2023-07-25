@@ -32,6 +32,13 @@
             right: 10px;
             width: 150px;
         }
+
+        #shakespeareMessage {
+            position: absolute;
+            top: 170px;
+            right: 10px;
+            display: none;
+        }
     </style>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -68,6 +75,11 @@
 <body>
     <img id="shakespeareImage" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Shakespeare.jpg" alt="William Shakespeare">
 
+    <div id="shakespeareMessage">
+        <p>It’s lonely at the top.</p>
+        <p>Regards,<br> William Shakespeare</p>
+    </div>
+
     <p>Welcome Guys</p>
     <form name="theForm">
         <fieldset>
@@ -77,15 +89,9 @@
         </fieldset>
     </form>
 
-    <!-- Shakespeare message, hidden by default and shown after submit -->
-    <div id="shakespeareMessage" style="display:none;">
-        <p>It’s lonely at the top.</p>
-        <p>Regards,<br> William Shakespeare</p>
-    </div>
-
     <!-- Footer message -->
     <marquee id="footerMessage" behavior="scroll" direction="left">
-        No, William. Loneliness fades when you uplift others on your journey.
+       Loneliness fades when you uplift others on your journey.
         <br>
         Warm regards, 
         <br>
