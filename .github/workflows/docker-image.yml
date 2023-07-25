@@ -47,7 +47,7 @@ jobs:
         rm -rf target/helloworld-html5.war
         rm -rf target/helloworld-html5-${REL}.war
         jf rt u --server-id=jfrogdemo --flat=false --include-dirs=true --recursive=true "target/*.war" demo/
-        echo "###########################################"
+        echo "############################################"
  
   publish-jboss-eap-runner-image:
      needs: build
