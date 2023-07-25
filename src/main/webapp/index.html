@@ -8,6 +8,20 @@
     <title>Welcome guys</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        body {
+            background-image: url('https://source.unsplash.com/random/1920x1080');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        #footerMessage {
+            font-size: 20px;
+            color: gold;
+            padding-top: 50px;
+        }
+    </style>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#sayHello').click(function(event) {
@@ -38,43 +52,32 @@
             });
         });
     </script>
-
-    <style>
-        /* Add the background image */
-        body {
-            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-        }
-
-        /* Aesthetic enhancements for contrast */
-        form, #shakespeareMessage {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <p>Welcome Guys</p>
-        <form name="theForm">
-            <fieldset>
-                <label for="name" id="name_label">Name</label>
-                <input name="name" id="name" type="text" required placeholder="Your Name" />
-                <input type="submit" id="sayHello" value="Say Hello" /><span id="result"></span>
-            </fieldset>
-        </form>
+    <p>Welcome Guys</p>
+    <form name="theForm">
+        <fieldset>
+            <label for="name" id="name_label">Name</label>
+            <input name="name" id="name" type="text" required placeholder="Your Name" />
+            <input type="submit" id="sayHello" value="Say Hello" /><span id="result"></span>
+        </fieldset>
+    </form>
 
-        <!-- Shakespeare message, hidden by default and shown after submit -->
-        <div id="shakespeareMessage" style="display:none;">
-            <p>It’s lonely at the top.</p>
-            <p>Regards,<br> William Shakespeare</p>
-        </div>
+    <!-- Shakespeare message, hidden by default and shown after submit -->
+    <div id="shakespeareMessage" style="display:none;">
+        <p>It’s lonely at the top.</p>
+        <p>Regards,<br> William Shakespeare</p>
     </div>
+
+    <!-- Footer message -->
+    <marquee id="footerMessage" behavior="scroll" direction="left">
+            "William, true leadership is about elevating others on your ascent. You're never alone when you uplift those around you."
+        <br>
+        Warm regards, 
+        <br>
+        KM
+    </marquee>
 </body>
 
 </html>
