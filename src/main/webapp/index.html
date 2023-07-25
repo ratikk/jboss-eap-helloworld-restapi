@@ -20,10 +20,19 @@
         
         #footerMessage {
             position: absolute;
-            bottom: 10px;
+            bottom: 50px;
             width: 100%;
             font-size: 20px;
             color: gold;
+        }
+
+        #flickrLink {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-decoration: underline;
+            color: lightblue;
         }
 
         #shakespeareImage {
@@ -77,9 +86,12 @@
         </fieldset>
     </form>
 
+    <!-- Flickr Link -->
+    <a href="https://www.flickr.com/photos/57883798@N03/page1" target="_blank" id="flickrLink">Check out the Flickr page</a>
+
     <!-- Footer message -->
     <marquee id="footerMessage" behavior="scroll" direction="left">
-        No, William. Loneliness fades when you uplift others on your journey.
+        Loneliness fades when you uplift others on your journey.
         <br>
         Warm regards, 
         <br>
