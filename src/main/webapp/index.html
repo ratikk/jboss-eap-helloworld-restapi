@@ -38,22 +38,42 @@
             });
         });
     </script>
+
+    <style>
+        /* Add the background image */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        /* Aesthetic enhancements for contrast */
+        form, #shakespeareMessage {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <p>Welcome Guys</p>
-    <form name="theForm">
-        <fieldset>
-            <label for="name" id="name_label">Name</label>
-            <input name="name" id="name" type="text" required placeholder="Your Name" />
-            <input type="submit" id="sayHello" value="Say Hello" /><span id="result"></span>
-        </fieldset>
-    </form>
+    <div class="container mt-5">
+        <p>Welcome Guys</p>
+        <form name="theForm">
+            <fieldset>
+                <label for="name" id="name_label">Name</label>
+                <input name="name" id="name" type="text" required placeholder="Your Name" />
+                <input type="submit" id="sayHello" value="Say Hello" /><span id="result"></span>
+            </fieldset>
+        </form>
 
-    <!-- Shakespeare message, hidden by default and shown after submit -->
-    <div id="shakespeareMessage" style="display:none;">
-        <p>It’s lonely at the top.</p>
-        <p>Regards,<br> William Shakespeare</p>
+        <!-- Shakespeare message, hidden by default and shown after submit -->
+        <div id="shakespeareMessage" style="display:none;">
+            <p>It’s lonely at the top.</p>
+            <p>Regards,<br> William Shakespeare</p>
+        </div>
     </div>
 </body>
 
