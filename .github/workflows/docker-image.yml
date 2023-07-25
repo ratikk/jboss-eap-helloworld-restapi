@@ -38,13 +38,8 @@ jobs:
         /opt/apache-maven-3.8.2/bin/mvn clean package wildfly:deploy
         NOW=$(date +"%Y%m%dT%H%M")
         REL=115.3.0.0
-       
-        
-
-        
         echo "Building docker image for jfrog registry"
         docker build . --file Dockerfile --tag ratik.jfrog.io/demodocker/jboss-eap-api:${{ github.sha }}
-        
         echo "##########################################"
         echo "Copy package to Jfrog"
         cp target/helloworld-html5.war target/helloworld-html5-${REL}.war
@@ -53,9 +48,7 @@ jobs:
         rm -rf target/helloworld-html5-${REL}.war
         jf rt u --server-id=jfrogdemo --flat=false --include-dirs=true --recursive=true "target/*.war" demo/
         echo "###########################################"
-    
-  
-
+ 
   publish-jboss-eap-runner-image:
      needs: build
      runs-on: ci-runner1
@@ -85,10 +78,6 @@ jobs:
        run: |
           echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
           docker pull ratik.jfrog.io/demodocker/jboss-eap-api:${{ github.sha }}
-         
-        
-   
-          
           
   image-scan:
     needs: cd-docker-login
@@ -109,7 +98,6 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'   
           
-          
   run-jboss-eap-runner-image:
     needs: image-scan
     runs-on: deploy-server
@@ -128,7 +116,6 @@ jobs:
         echo ${{ secrets.JFROGSECRET }} | docker login -udemo ratik.jfrog.io --password-stdin 
         docker run -itd -p 8008:8008 -p 9990:9990 ratik.jfrog.io/demodocker/jboss-eap-api:${{ github.sha }}
         sleep 10
-
 
   check-application-health:
     needs: run-jboss-eap-runner-image
