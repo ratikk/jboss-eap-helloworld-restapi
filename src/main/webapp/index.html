@@ -6,46 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome guys</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <style>
         body {
-            background-image: url('https://source.unsplash.com/random/1920x1080');
+            background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center fixed;
             background-size: cover;
-            color: white;
-            font-family: Arial, sans-serif;
-            position: relative;
-            min-height: 100vh;
-        }
-        
-        #footerMessage {
-            position: absolute;
-            bottom: 50px;
-            width: 100%;
-            font-size: 20px;
-            color: gold;
-        }
-
-        #flickrLink {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-decoration: underline;
-            color: lightblue;
         }
 
         #shakespeareImage {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 150px;
+            width: 200px;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        #shakespeareMessage {
-            position: absolute;
-            top: 170px;
-            right: 10px;
+        #flickrImage {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+
+        marquee#footerMessage {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
         }
     </style>
     <script type="text/javascript">
@@ -63,7 +53,7 @@
                     return;
                 }
 
-                $('#result').text("Hello, " + name + "!");
+                result.text("Hello, " + name + "!");
             });
         });
     </script>
@@ -77,8 +67,7 @@
         <p>Regards,<br> William Shakespeare</p>
     </div>
 
-    <p>Welcome Guys</p>
-    <form name="theForm">
+    <form name="theForm" class="text-center mt-5">
         <fieldset>
             <label for="name" id="name_label">Name</label>
             <input name="name" id="name" type="text" required placeholder="Your Name" />
@@ -86,12 +75,10 @@
         </fieldset>
     </form>
 
-    <!-- Flickr Link -->
-    <a href="https://www.flickr.com/photos/57883798@N03/page1" target="_blank" id="flickrLink">Check out the Flickr page</a>
+    <img id="flickrImage" src="https://live.staticflickr.com/3864/14777848933_2dc926a6ca_b.jpg" alt="Image from Flickr">
 
-    <!-- Footer message -->
     <marquee id="footerMessage" behavior="scroll" direction="left">
-        Loneliness fades when you uplift others on your journey.
+        No, William. Loneliness fades when you uplift others on your journey.
         <br>
         Warm regards, 
         <br>
