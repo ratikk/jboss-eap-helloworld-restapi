@@ -37,7 +37,6 @@
             position: absolute;
             top: 170px;
             right: 10px;
-            display: none;
         }
     </style>
     <script type="text/javascript">
@@ -55,18 +54,7 @@
                     return;
                 }
 
-                $.ajax('hello/json/' + name, {
-                    dataType: 'json',
-                    data: {},
-                    type: 'POST',
-                    success: function(data) {
-                        $('#result').text(data.result);
-                        // Displaying the Shakespeare message after submit is clicked
-                        $("#shakespeareMessage").show();
-                    }
-                }).error(function() {
-                    console.log("error");
-                });
+                $('#result').text("Hello, " + name + "!");
             });
         });
     </script>
@@ -91,7 +79,7 @@
 
     <!-- Footer message -->
     <marquee id="footerMessage" behavior="scroll" direction="left">
-       Loneliness fades when you uplift others on your journey.
+        No, William. Loneliness fades when you uplift others on your journey.
         <br>
         Warm regards, 
         <br>
